@@ -118,4 +118,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+#esto lo puse porque no me cargaba el archivo blog.css 21/08/2019
+STATIC_ROOT = os.path.join(BASE_DIR, "deploy_to_server")
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, "static"),
+)
