@@ -18,6 +18,12 @@ body {
     text-decoration: none;
 }
 
+.boton_list li{
+    display:inline;
+    padding-left:3px;
+    padding-right:3px;
+}
+
 .content {
     margin-left: 40px;
 }
