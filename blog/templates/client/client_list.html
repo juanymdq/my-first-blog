@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="post">
+
+        <table class="client_list">
+            <tr>
+                <td class="form-buscar" colspan="7">
+                    <form action="{% url 'client_list' %}" method="POST">
+                        Nombre:
+                        <input type="text" name="name_client" placeholder="Ingrese el nombre a buscar" style="width:180px" />
+                        Apellido:
+                        <input type="text" name="apel_client" placeholder="Ingrese el apellido a buscar" style="width:180px" />
+                        <button type="submit" class="btn btn-primary btn-sm" title="Buscar"><span class="glyphicon glyphicon-search"></span></button>
+                        <a href="{% url 'client_list' %}" class="btn btn-primary btn-sm" title="Recargar tabla"><span class="glyphicon glyphicon-repeat"></span></a>
+                        {% csrf_token %}
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Direcci&oacute;n</th>
+                <th>Fecha Creaci&oacute;n</th>
+                <th colspan="2">Acciones | <a href="{% url 'client_new' %}" class="acciones_tabla"><span class="glyphicon glyphicon-plus"></span></a></th>
+            </tr>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.nombre}}</td>
+                    <td>{{ client.apellido }}</td>
+                    <td>{{ client.dni}}</td>
+                    <td>{{ client.direccion}}</td>
+                    <td>{{ client.fecha_creacion}}</td>
+                    <td><a href="{% url 'client_edit' pk=client.pk %}" class="acciones_tabla"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td><a href="{% url 'client_remove' pk=client.pk %}" class="acciones_tabla"><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+</div>
+{% endblock %}

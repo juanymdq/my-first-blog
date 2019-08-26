@@ -17,8 +17,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Cliente(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=70)
-    dni = 
+    dni = models.IntegerField()
+    direccion = models.CharField(max_length=100)
+    fecha_creacion = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.nombre

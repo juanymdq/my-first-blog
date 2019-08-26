@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Editar Cliente</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'client_list' %}" class="btn btn-primary btn-sm" title="Volver"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        <button type="submit" class="btn btn-primary btn-sm" title="Guardar"><span class="glyphicon glyphicon-ok"></span></button>
+{% endblock %}
